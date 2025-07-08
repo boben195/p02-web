@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link to="/cart">
             <div className="nav_cart">
               <BiCart className="nav_icon" />
-              <p>0</p>
+              <p className="cart_qty">0</p>
             </div>
           </Link>
           <BiUser className="nav_icon" />
