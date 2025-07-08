@@ -15,7 +15,7 @@ const Hero = () => {
             </p>
             <button>Shop the collection</button>
           </div>
-          <div className="hero right">
+          <div className="hero_right">
             <img src={hero_img} alt="Some headphones dude" />
           </div>
         </div>
