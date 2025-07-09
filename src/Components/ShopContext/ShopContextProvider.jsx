@@ -98,8 +98,8 @@ const ShopContextProvider = ({ children }) => {
 
   return (
     <ShopContext.Provider
-      value={
-        (products,
+      value={{
+        products,
         cart,
         quantity,
         total,
@@ -107,8 +107,8 @@ const ShopContextProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         increase,
-        decrease)
-      }
+        decrease,
+      }}
     >
       {children}
     </ShopContext.Provider>
