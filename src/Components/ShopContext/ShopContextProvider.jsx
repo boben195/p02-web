@@ -8,7 +8,7 @@ const ShopContextProvider = ({ children }) => {
   const [quantity, setQuantity] = useState(0);
   const [total, setTotal] = useState(0);
 
-  //fanc for calculate total price//
+  //func for calculate total price//
   useEffect(() => {
     const total = cart.reduce((acc, curItem) => {
       const priceAsNumber = parseFloat(curItem.price);
@@ -20,9 +20,9 @@ const ShopContextProvider = ({ children }) => {
     }, 0);
     setTotal(total);
   }, [cart]);
-  //fanc for calculate total price//
+  //func for calculate total price//
 
-  //fanc for calc quantity of items in’d box//
+  //func for calc quantity of items in’d box//
   useEffect(() => {
     if (cart) {
       const amount = cart.reduce((acc, curItem) => {
@@ -31,13 +31,43 @@ const ShopContextProvider = ({ children }) => {
       setQuantity(amount);
     }
   }, [cart]);
-  //fanc for calc quantity of items in’d box//
+  //func for calc quantity of items in’d box//
 
-  //fanc to add cart to the box//
-  //fanc to add cart to the box//
+  //func to add cart to the box//
+  const addToCart = (product, id) => {
+    const newItem = { ...product, amount: 1 };
+    const cartItem = cart.find((item) => {
+      return item.id === id;
+    });
+    if (cartItem) {
+      const newCart = [...cart].map((item) => {
+        if (item.id === id) {
+          return { ...item, amount: cartItem.amount + 1 };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
+    } else {
+      setCart([...cart, newItem]);
+    }
+  };
+  //func to add cart to the box//
+
+  //func for delete items from cart//
+  const removeFromCart = (id) => {
+    const newCart = cart.filter((item) => {
+      return item.id !== id;
+    });
+    setCart(newCart);
+  };
+
+  //func for delete items from cart//
 
   return (
-    <ShopContext.Provider value={(products, cart, quantity, total)}>
+    <ShopContext.Provider
+      value={(products, cart, quantity, total, addToCart, removeFromCart)}
+    >
       {children}
     </ShopContext.Provider>
   );
