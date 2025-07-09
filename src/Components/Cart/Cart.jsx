@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { ShopContext } from "../ShopContext/ShopContext";
 import { FiTrash2 } from "react-icons/fi";
-import CartDetails from "./CartDetails.";
+import CartDetails from "./CartDetails";
 
 const Cart = () => {
   const { cart, clearCart, total, quantity } = useContext(ShopContext);
@@ -23,13 +23,33 @@ const Cart = () => {
           </div>
           <div className="cart-detailes">
             {cart.length > 0 ? (
-              <CartDetails item={item} key={item.id} />
+              cart.map((item) => <CartDetails item={item} key={item.id} />)
             ) : (
               <p>Your cart is empty</p>
             )}
           </div>
         </div>
-        <div className="cart-right"></div>
+        <div className="cart-right">
+          <h2>Cart Summary</h2>
+          <div className="summary_item">
+            <span>Items: </span>
+            <span>{quantity}</span>
+          </div>
+          <div className="cart_summary">
+            <div className="summary_item">
+              <span>Subtotal</span>
+              <span>${isNaN(total) ? 0 : total}</span>
+            </div>
+            <div className="summary_item">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div className="summary_item total_cost">
+              <span>Total Cost</span>
+              <span>${isNaN(total) ? 0 : total}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
