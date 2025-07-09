@@ -61,12 +61,54 @@ const ShopContextProvider = ({ children }) => {
     });
     setCart(newCart);
   };
-
   //func for delete items from cart//
+
+  //func to clear entire cart //
+  const clearCart = () => {
+    setCart([]);
+  };
+  //func to clear entire cart //
+
+  //func to increase quantity of items in the cart//
+  const increase = (id) => {
+    const cartItem = cart.find((item) => item.id === id);
+    addToCart(cartItem, id);
+  };
+  //func to increase quantity of items in the cart//
+
+  //func to decrease quantity of items in the cart//
+  const decrease = (id) => {
+    const cartItem = cart.find((item) => item.id === id);
+    if (cartItem) {
+      const newCart = cart.map((item) => {
+        if (item.id === id) {
+          return { ...item, amount: cartItem.amount - 1 };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
+    } else {
+      if (cartItem.amount < 2) {
+        removeFromCart(id);
+      }
+    }
+  };
+  //func to decrease quantity of items in the cart//
 
   return (
     <ShopContext.Provider
-      value={(products, cart, quantity, total, addToCart, removeFromCart)}
+      value={
+        (products,
+        cart,
+        quantity,
+        total,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        increase,
+        decrease)
+      }
     >
       {children}
     </ShopContext.Provider>
