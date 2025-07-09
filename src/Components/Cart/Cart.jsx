@@ -48,6 +48,7 @@ const Cart = () => {
               <span>Total Cost</span>
               <span>${isNaN(total) ? 0 : total}</span>
             </div>
+            <button className="checkout_btn">CHECKOUT</button>
           </div>
         </div>
       </div>

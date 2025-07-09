@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ShopContext } from "../ShopContext/ShopContext";
 import { FiTrash2 } from "react-icons/fi";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
+import "./Cart.css";
 
 const CartDetails = ({ item }) => {
   const { decrease, increase, removeFromCart } = useContext(ShopContext);
