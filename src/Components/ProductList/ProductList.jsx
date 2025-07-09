@@ -15,12 +15,16 @@ const ProductList = () => {
             return (
               <div className="product-card" key={id}>
                 <Link to={`/product/${product.id}`} key={product.id}>
-                  <img src={image} alt="some cool headphones" />
+                  <img
+                    src={image}
+                    alt="some cool headphones"
+                    className="product-image"
+                  />
                   <div className="product-info">
                     <h4>{title}</h4>
                     <p>${price}</p>
                   </div>
-                  <button>Add to cart</button>
+                  <button className="add-to-cart">Add to cart</button>
                 </Link>
               </div>
             );
