@@ -16,7 +16,7 @@ const CartDetails = ({ item }) => {
           <div className="product_info">
             <h3>{title}</h3>
             <div className="cart_item_remove">
-              <FiTrash2 /> Remove
+              <FiTrash2 onClick={() => removeFromCart(id)} /> Remove
             </div>
           </div>
         </div>
